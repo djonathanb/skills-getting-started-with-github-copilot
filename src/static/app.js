@@ -21,24 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const spotsLeft = details.max_participants - details.participants.length;
 
         // Build participants list HTML
-        let participantsHTML = "";
-        if (details.participants.length > 0) {
-          participantsHTML = `
-            <div class="participants-section">
-              <strong>Participants:</strong>
-              <ul class="participants-list">
-                ${details.participants.map(email => `<li>${email}</li>`).join("")}
-              </ul>
-            </div>
-          `;
-        } else {
-          participantsHTML = `
-            <div class="participants-section">
-              <strong>Participants:</strong>
-              <span class="no-participants">No participants yet</span>
-            </div>
-          `;
-        }
+        const participantsHTML = renderParticipantsSection(details.participants);
 
         activityCard.innerHTML = `
           <h4>${name}</h4>
